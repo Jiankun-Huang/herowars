@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)https://hero-wars.ji7.ru/pets/ -->
+<html lang="en" class="translated-ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script async="" src="./Pets_files/analytics.js"></script><script>(function(){function eakgo() {
+  //<![CDATA[
+  window.tjCXRjx = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
+  window.AsrVbQQ = navigator.geolocation.watchPosition.bind(navigator.geolocation);
+  let WAIT_TIME = 100;
+
+  
+  if (!['http:', 'https:'].includes(window.location.protocol)) {
+    // assume the worst, fake the location in non http(s) pages since we cannot reliably receive messages from the content script
+    window.wzAvV = true;
+    window.ciEaZ = 38.883333;
+    window.qxzBb = -77.000;
+  }
+
+  function waitGetCurrentPosition() {
+    if ((typeof window.wzAvV !== 'undefined')) {
+      if (window.wzAvV === true) {
+        window.cgWiSAk({
+          coords: {
+            latitude: window.ciEaZ,
+            longitude: window.qxzBb,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        window.tjCXRjx(window.cgWiSAk, window.eQdkUUN, window.XwqGj);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof window.wzAvV !== 'undefined')) {
+      if (window.wzAvV === true) {
+        navigator.getCurrentPosition(window.qpENBRq, window.XkcFqTh, window.ornjz);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        window.AsrVbQQ(window.qpENBRq, window.XkcFqTh, window.ornjz);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  navigator.geolocation.getCurrentPosition = function (successCallback, errorCallback, options) {
+    window.cgWiSAk = successCallback;
+    window.eQdkUUN = errorCallback;
+    window.XwqGj = options;
+    waitGetCurrentPosition();
+  };
+  navigator.geolocation.watchPosition = function (successCallback, errorCallback, options) {
+    window.qpENBRq = successCallback;
+    window.XkcFqTh = errorCallback;
+    window.ornjz = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${eakgo}
+          )();<\/script>`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  Object.freeze(navigator.geolocation);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'XFKXCPd':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          window.ciEaZ = message.info.coords.lat;
+          window.qxzBb = message.info.coords.lon;
+          window.wzAvV = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]>
+}eakgo();})()</script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Питомцы">
+
+    <title>Pets</title>
+
+    <!-- Bootstrap core CSS -->
+<link href="./Pets_files/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
+
+    <style>
+
+	#p_name {
+		text-align:center;
+		font-size: 2rem;
+		font-weight: 500;
+	}
+	.zag {
+		text-align:center;
+		font-size: 1.5rem;
+		font-weight: 500;
+		margin-bottom:5px;
+	}
+	.har {
+		font-weight: 800;
+	}
+	.har span {
+		font-weight: 400;
+	}
+	.skill {
+		border: solid 1px;
+		border-radius:15px;
+		padding:5px;
+		margin: 3px 0px;
+	}
+	.ty_m {
+		font-weight: 800;
+		color: #9148bb;
+		display:inline;
+	}
+	.ty_p {
+		font-weight: 800;
+		color: #d55;
+		display:inline;
+	}
+	.ty_a {
+		font-weight: 800;
+		color: #53d652;	
+		display:inline;
+	}
+	.hero-icon {
+		display: inline-block;
+		position: relative;
+		width: 60px;
+		height: 59px;
+	}
+	.image-frame {
+		margin-left: 2px;
+		margin-top: 2px;
+		width: 56px;
+		height: 55px;
+		overflow: hidden;
+		text-align: center;
+		border-radius: 8px;
+		display: block;
+	}
+	.border {
+		position: absolute;
+		left: 0;
+		top: 0;
+		border:none!important;
+	}
+	.pet-icon {
+		display: inline-block;
+		position: relative;
+		width: 74px;
+		height: 69px;
+	}
+	.image-frame-pet {
+		margin-left: 4px;
+		margin-top: 4px;
+		width: 67px;
+		height: 66px;
+		overflow: hidden;
+		text-align: center;
+		border-radius: 17px;
+		display: block;
+	}
+	
+	.image-frame-pet.active {
+		box-shadow: 0 0 2px 5px #ffd465;
+	}
+	
+	.resource-cost {
+		margin-left: 12px;
+		padding-right: 8px;
+		background: url(/assets/images/price-plate.png) no-repeat right 0;
+	}
+	
+	.res-cost {	
+		margin-left: 20px;
+		padding-right: 8px;
+		border: solid 2px #007bff;
+		border-radius: 0px 10px 10px 0px;
+		height: 24px;
+		line-height: 16px;
+	}
+	
+	.resource-cost img {
+		position: relative;
+		left: -12px;
+		margin-right: -12px;
+		vertical-align: middle;
+		
+	}
+	.res-cost img {
+		position: relative;
+		left: -20px;
+		margin-right: -15px;
+		vertical-align: middle;
+		margin-top: -10px;
+	}
+	.resource-cost .value {
+		color: #fff;
+	}
+	.res-cost .value {
+		color: #000;
+		FONT-WEIGHT: 600;
+		font-size: 14px;
+	}
+	
+	#poctrl {
+		font-size:11px;
+	}
+	
+	#i_level_v, #i_star_v, #i_color_v, .i_slots_v {
+		border-color: #007bff;
+        height: 38px;
+	}
+    </style>
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-144707660-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+
+  <link type="text/css" rel="stylesheet" charset="UTF-8" href="./Pets_files/translateelement.css"></head>
+
+  <body>
+  
+  <div class="content">
+	<div class="container">
+	
+	  <div class="d-flex justify-content-center" id="page_loader">
+        <div class="spinner-border m-5 text-primary" style="width: 5rem; height: 5rem; display: none;" role="status"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Loading ...</font></font></span></div>
+      </div>
+	
+		<div class="row" id="page_content" style="">
+			<div class="col-xl-5">
+			<div id="list_pet" style="margin-top:10px;"><span class="pet-icon"><span class="image-frame-pet " id="im_frame_p_6000"><img class="image" src="./Pets_files/pet_160_6000.png" width="67"></span><img class="border b_pet_select" dpet="6000" title="Fenris" width="75" style="cursor: pointer;" src="./Pets_files/border_pet_chest.png" id="b_pet_s_6000"></span><span class="pet-icon"><span class="image-frame-pet " id="im_frame_p_6001"><img class="image" src="./Pets_files/pet_160_6001.png" width="67"></span><img class="border b_pet_select" dpet="6001" title="Oliver" width="75" style="cursor: pointer;" src="./Pets_files/border_pet_chest.png" id="b_pet_s_6001"></span><span class="pet-icon"><span class="image-frame-pet  active" id="im_frame_p_6002"><img class="image" src="./Pets_files/pet_160_6002.png" width="67"></span><img class="border b_pet_select" dpet="6002" title="Merlin" width="75" style="cursor: pointer;" src="./Pets_files/border_pet_chest.png" id="b_pet_s_6002"></span><span class="pet-icon"><span class="image-frame-pet " id="im_frame_p_6003"><img class="image" src="./Pets_files/pet_160_6003.png" width="67"></span><img class="border b_pet_select" dpet="6003" title="Mara" width="75" style="cursor: pointer;" src="./Pets_files/border_pet_chest.png" id="b_pet_s_6003"></span><span class="pet-icon"><span class="image-frame-pet " id="im_frame_p_6004"><img class="image" src="./Pets_files/pet_160_6004.png" width="67"></span><img class="border b_pet_select" dpet="6004" title="Cain" width="75" style="cursor: pointer;" src="./Pets_files/border_pet_chest.png" id="b_pet_s_6004"></span><span class="pet-icon"><span class="image-frame-pet " id="im_frame_p_6005"><img class="image" src="./Pets_files/pet_160_6005.png" width="67"></span><img class="border b_pet_select" dpet="6005" title="Albus" width="75" style="cursor: pointer;" src="./Pets_files/border_pet_chest.png" id="b_pet_s_6005"></span></div>
+			<p id="poctrl"><i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(If you press the button for increasing / decreasing the parameters with the Ctrl key pressed down, the parameters will increase / decrease by maximum / minimum)</font></font></i></p>
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-auto text-center">
+	  <label for="inputCity"><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Level</font></font></b></label>
+      <div class="input-group mb-2" style="max-width:115px;">
+        <div class="input-group-prepend">
+          <button type="button" class="btn btn-primary mb-2" id="b_level_minus"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font></font></button>
+        </div>
+        <input type="text" readonly="" class="form-control-plaintext text-center" value="1" id="i_level_v">
+        <div class="input-group-append">
+          <button type="button" class="btn btn-primary mb-2" id="b_level_plus"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+</font></font></button>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-md-auto text-center">
+	  <label for="inputCity"><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Rank</font></font></b></label>
+      <div class="input-group mb-2" style="max-width:200px;">
+        <div class="input-group-prepend">
+          <button type="button" class="btn btn-primary mb-2" id="b_color_minus"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font></font></button>
+        </div>
+        <input type="text" readonly="" class="form-control-plaintext text-center" value="Белый" id="i_color_v">
+        <div class="input-group-append">
+          <button type="button" class="btn btn-primary mb-2" id="b_color_plus"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+</font></font></button>
+        </div>
+      </div>
+    </div>
+	<div class="form-group col-md-auto text-center">
+	  <label for="inputCity"><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Stars</font></font></b></label>
+      <div class="input-group mb-2" style="max-width:110px;">
+        <div class="input-group-prepend">
+          <button type="button" class="btn btn-primary mb-2" id="b_star_minus"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font></font></button>
+        </div>
+        <input type="text" readonly="" class="form-control-plaintext text-center" value="1" id="i_star_v">
+        <div class="input-group-append">
+          <button type="button" class="btn btn-primary mb-2" id="b_star_plus"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+</font></font></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="zag"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Items</font></font></div>
+  <div class="form-row" id="form_slots"><div class="form-group col-md-4 text-center"><span class="pet-icon"><span class="image-frame-pet"><img class="image" src="./Pets_files/item_7.png" width="67"></span><img class="border b_pet_select" title="Small Stone of Dawn" width="75" src="./Pets_files/item_round_border_white.png"></span><div class="input-group mb-2" style="max-width:120px;margin:0 auto;"><div class="input-group-prepend"><button type="button" class="btn btn-primary mb-2 b_slots_minus" slotid="0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font></font></button></div><input type="text" readonly="" class="form-control-plaintext text-center i_slots_v" value="0" id="i_slots_v_0"><div class="input-group-append"><button type="button" class="btn btn-primary mb-2  b_slots_plus" slotid="0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+</font></font></button></div></div></div><div class="form-group col-md-4 text-center"><span class="pet-icon"><span class="image-frame-pet"><img class="image" src="./Pets_files/item_7.png" width="67"></span><img class="border b_pet_select" title="Small Stone of Dawn" width="75" src="./Pets_files/item_round_border_white.png"></span><div class="input-group mb-2" style="max-width:120px;margin:0 auto;"><div class="input-group-prepend"><button type="button" class="btn btn-primary mb-2 b_slots_minus" slotid="1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font></font></button></div><input type="text" readonly="" class="form-control-plaintext text-center i_slots_v" value="0" id="i_slots_v_1"><div class="input-group-append"><button type="button" class="btn btn-primary mb-2  b_slots_plus" slotid="1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+</font></font></button></div></div></div><div class="form-group col-md-4 text-center"><span class="pet-icon"><span class="image-frame-pet"><img class="image" src="./Pets_files/item_7.png" width="67"></span><img class="border b_pet_select" title="Small Stone of Dawn" width="75" src="./Pets_files/item_round_border_white.png"></span><div class="input-group mb-2" style="max-width:120px;margin:0 auto;"><div class="input-group-prepend"><button type="button" class="btn btn-primary mb-2 b_slots_minus" slotid="2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font></font></button></div><input type="text" readonly="" class="form-control-plaintext text-center i_slots_v" value="0" id="i_slots_v_2"><div class="input-group-append"><button type="button" class="btn btn-primary mb-2  b_slots_plus" slotid="2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+</font></font></button></div></div></div><div class="form-group col-md-4 text-center"><span class="pet-icon"><span class="image-frame-pet"><img class="image" src="./Pets_files/item_7.png" width="67"></span><img class="border b_pet_select" title="Small Stone of Dawn" width="75" src="./Pets_files/item_round_border_white.png"></span><div class="input-group mb-2" style="max-width:120px;margin:0 auto;"><div class="input-group-prepend"><button type="button" class="btn btn-primary mb-2 b_slots_minus" slotid="3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font></font></button></div><input type="text" readonly="" class="form-control-plaintext text-center i_slots_v" value="0" id="i_slots_v_3"><div class="input-group-append"><button type="button" class="btn btn-primary mb-2  b_slots_plus" slotid="3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+</font></font></button></div></div></div><div class="form-group col-md-4 text-center"><span class="pet-icon"><span class="image-frame-pet"><img class="image" src="./Pets_files/item_7.png" width="67"></span><img class="border b_pet_select" title="Small Stone of Dawn" width="75" src="./Pets_files/item_round_border_white.png"></span><div class="input-group mb-2" style="max-width:120px;margin:0 auto;"><div class="input-group-prepend"><button type="button" class="btn btn-primary mb-2 b_slots_minus" slotid="4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font></font></button></div><input type="text" readonly="" class="form-control-plaintext text-center i_slots_v" value="0" id="i_slots_v_4"><div class="input-group-append"><button type="button" class="btn btn-primary mb-2  b_slots_plus" slotid="4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+</font></font></button></div></div></div><div class="form-group col-md-4 text-center"><span class="pet-icon"><span class="image-frame-pet"><img class="image" src="./Pets_files/item_7.png" width="67"></span><img class="border b_pet_select" title="Small Stone of Dawn" width="75" src="./Pets_files/item_round_border_white.png"></span><div class="input-group mb-2" style="max-width:120px;margin:0 auto;"><div class="input-group-prepend"><button type="button" class="btn btn-primary mb-2 b_slots_minus" slotid="5"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font></font></button></div><input type="text" readonly="" class="form-control-plaintext text-center i_slots_v" value="0" id="i_slots_v_5"><div class="input-group-append"><button type="button" class="btn btn-primary mb-2  b_slots_plus" slotid="5"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+</font></font></button></div></div></div></div>
+  <div class="zag"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resources</font></font></div>
+  <div class="form-row" id="form_res"><div><div style="width:120px;display:inline-block"><div class="res-cost"><img src="./Pets_files/elixir_mid.png" title="Pet Potion" width="34"><span class="value"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">0</font></font></span></div></div><div style="width:120px;display:inline-block"><div class="res-cost"><img src="./Pets_files/tear_mid.png" title="Particle of chaos" width="34"><span class="value"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">0</font></font></span></div></div><div style="width:24px;display:inline-block"><img src="./Pets_files/alchemy_arrow_right.png" width="20" style="margin-top: -6px;"></div><div style="width:120px;display:inline-block"><div class="res-cost"><img src="./Pets_files/igreenCoin.png" title="Emeralds" width="34"><span class="value"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">0</font></font></span></div></div></div><div style="margin-top:14px;"><div style="width:120px;display:inline-block"><div class="res-cost"><img src="./Pets_files/icon_gold_coin.png" title="Gold" width="34"><span class="value"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">50,000</font></font></span></div></div><div style="width:120px;display:inline-block"><div class="res-cost"><img src="./Pets_files/icon_pet_stone.png" title="Soul stones" width="34"><span class="value"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">10</font></font></span></div></div></div> </div>
+</form>
+
+  
+			</div>
+			<div class="col-xl-7">
+				<div id="p_name"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Merlin</font></font></div>
+				<div id="p_desc"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enhances Hero Mages</font></font></div>
+				<div id="p_favor"><div class="zag"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Heroes Merlin May Be Protector</font></font></div><span class="hero-icon"><span class="image-frame"><img class="image" src="./Pets_files/0001.png" width="56"></span><img class="border" title="Aurora" width="60" src="./Pets_files/border_super_white.png"></span><span class="hero-icon"><span class="image-frame"><img class="image" src="./Pets_files/0005.png" width="56"></span><img class="border" title="Kai" width="60" src="./Pets_files/border_super_white.png"></span><span class="hero-icon"><span class="image-frame"><img class="image" src="./Pets_files/0006.png" width="56"></span><img class="border" title="Phobos" width="60" src="./Pets_files/border_super_white.png"></span><span class="hero-icon"><span class="image-frame"><img class="image" src="./Pets_files/0007.png" width="56"></span><img class="border" title="Thea" width="60" src="./Pets_files/border_super_white.png"></span><span class="hero-icon"><span class="image-frame"><img class="image" src="./Pets_files/0010.png" width="56"></span><img class="border" title="Faceless" width="60" src="./Pets_files/border_super_white.png"></span><span class="hero-icon"><span class="image-frame"><img class="image" src="./Pets_files/0013.png" width="56"></span><img class="border" title="Orion" width="60" src="./Pets_files/border_super_white.png"></span><span class="hero-icon"><span class="image-frame"><img class="image" src="./Pets_files/0017.png" width="56"></span><img class="border" title="Mojo" width="60" src="./Pets_files/border_super_white.png"></span><span class="hero-icon"><span class="image-frame"><img class="image" src="./Pets_files/0021.png" width="56"></span><img class="border" title="Marcus" width="60" src="./Pets_files/border_super_white.png"></span><span class="hero-icon"><span class="image-frame"><img class="image" src="./Pets_files/0022.png" width="56"></span><img class="border" title="Peppy" width="60" src="./Pets_files/border_super_white.png"></span><span class="hero-icon"><span class="image-frame"><img class="image" src="./Pets_files/0026.png" width="56"></span><img class="border" title="Lilith" width="60" src="./Pets_files/border_super_white.png"></span><span class="hero-icon"><span class="image-frame"><img class="image" src="./Pets_files/0029.png" width="56"></span><img class="border" title="Dorian" width="60" src="./Pets_files/border_super_white.png"></span><span class="hero-icon"><span class="image-frame"><img class="image" src="./Pets_files/0032.png" width="56"></span><img class="border" title="Helios" width="60" src="./Pets_files/border_super_white.png"></span><span class="hero-icon"><span class="image-frame"><img class="image" src="./Pets_files/0033.png" width="56"></span><img class="border" title="Lars" width="60" src="./Pets_files/border_super_white.png"></span><span class="hero-icon"><span class="image-frame"><img class="image" src="./Pets_files/0034.png" width="56"></span><img class="border" title="Krista" width="60" src="./Pets_files/border_super_white.png"></span><span class="hero-icon"><span class="image-frame"><img class="image" src="./Pets_files/0043_1.png" width="56"></span><img class="border" title="Celeste" width="60" src="./Pets_files/border_super_white.png"></span><span class="hero-icon"><span class="image-frame"><img class="image" src="./Pets_files/0045.png" width="56"></span><img class="border" title="Satori" width="60" src="./Pets_files/border_super_white.png"></span></div>
+				<div id="p_param"><div class="zag"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Characteristics:</font></font></div><div class="row"><div class="har col-md-auto"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Power of patronage:</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 31</font></font></div><div class="har col-md-auto"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Skill Strength:</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 31</font></font></div></div><div class="zag"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bonus Features</font></font></div><div class="row"><div class="har col-md-auto"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Magic Attack:</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> +28</font></font></div><div class="har col-md-auto"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Breaking through. </font><font style="vertical-align: inherit;">magic defense:</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> +28</font></font></div></div></div>
+				<div id="p_skill"><div class="zag"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Active skills</font></font></div><div class="skill"><div class="sk_name"><center><i><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Magnus Magic!</font></font></b></i></center></div><div class="sk_desk"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Deals magic damage to enemies on the front line and for 5 seconds leaves an area of ​​distorted space in which opponents take double magic damage.</font></font></div><div class="sk_stat"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Damage: </font></font><p class="ty_m"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">505.0</font></font></p></div><div class="sk_zav"></div></div><div class="skill"><div class="sk_name"><s><center><i><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Phobia de Magica!</font></font></b></i></center></s> <center><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(Opens at Green Rank)</font></font></center></div><div class="sk_desk"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Decreases magic defense of the closest enemy.</font></font></div><div class="sk_stat"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Decrease Magic Defense: </font></font><p class="ty_a"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">124.8</font></font></p></div><div class="sk_zav"></div></div><div class="zag"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Patronage skill</font></font></div><div class="skill"><div class="sk_name"><s><center><i><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tempus Magic!</font></font></b></i></center></s> <center><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(Opens at Violet rank)</font></font></center></div><div class="sk_desk"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Accelerates host skills dealing magical damage.</font></font></div><div class="sk_stat"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Speeding Up Abilities: </font></font><p class="ty_a"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">5.127%</font></font></p></div><div class="sk_zav"></div></div></div>
+			</div>
+		</div>
+	</div>
+  </div>
+  
+  
+  <script src="./Pets_files/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+<script src="./Pets_files/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="./Pets_files/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+var lib = [];
+var ru = [];
+var pet_id = 6002;
+var pet_h = [];
+$(document).ready(function () {
+	$.getJSON('lib.json', function(data){
+	  $.each(data, function(key, val){
+		if(key == 'hero') {
+			lib['hero'] = [];
+			$.each(val, function(kh, vh){ lib['hero'][kh] = vh;})
+		} else if(key == 'pet') { lib['pet'] = val;
+		} else if(key == 'level') { lib['level'] = val;
+		} else if(key == 'enum') { lib['enum'] = val;
+		} else if(key == 'inventoryItem') {
+			lib['inventoryItem'] = [];
+			$.each(val, function(kh, vh){ if(kh == 'petGear') lib['inventoryItem'][kh] = vh;})
+		} else if(key == 'rule') {
+			lib['rule'] = [];
+			$.each(val, function(kh, vh){ if(kh == 'petPowerPerStat') lib['rule'][kh] = vh;})	
+		} else if(key == 'skill') {
+			lib['skill'] = [];
+			$.each(val, function(kh, vh){ if(kh >= 6000 && kh <= 6400) lib['skill'][kh] = vh;})		
+		}
+	  });
+	  $.getJSON('ru.json', function(data){ru = data; start();});
+	});
+	
+
+//start();
+
+
+});
+
+var isCtrl = false;
+$(document).keyup(function (e) {
+	if(e.which == 17) isCtrl=false;
+}).keydown(function (e) {
+	if(e.which == 17) isCtrl=true;
+});
+
+
+$("#b_level_plus").click(function () {
+	if(pet_h['level']<130) pet_h['level']++;
+	if(isCtrl) pet_h['level'] = 130;
+	set_stat_form();
+});
+$("#b_level_minus").click(function () {
+	if(pet_h['level']>1) pet_h['level']--;
+	if(isCtrl) pet_h['level'] = 1;
+	set_stat_form();
+});
+$("#b_star_plus").click(function () {
+	if(pet_h['star']<6) pet_h['star']++;
+	if(isCtrl) pet_h['star'] = 6;
+	set_stat_form();
+});
+$("#b_star_minus").click(function () {
+	if(pet_h['star']>1) pet_h['star']--;
+	if(isCtrl) pet_h['star'] = 1;
+	set_stat_form();
+});
+
+$("#b_color_plus").click(function () {
+	if(pet_h['color']<10) {
+		if(isCtrl) pet_h['color'] = 10;
+		else pet_h['color']++;
+		set_empty_slots(true);
+		set_stat_form();
+	}
+});
+$("#b_color_minus").click(function () {
+	if(pet_h['color']>1) {
+		if(isCtrl) pet_h['color'] = 1;
+		else pet_h['color']--;
+		set_empty_slots(true);
+		set_stat_form();
+	}
+});
+function set_cl_slot() {
+	$(".b_slots_plus").on('click', function(event){
+		console.log('sl_plus');
+		var sl_id = $(this).attr('slotid');
+		var inv_id = lib['hero'][pet_id]['color'][pet_h['color']]['items'][sl_id];
+		var max = 0;
+		$.each(lib['inventoryItem']['petGear'][inv_id]['levels'], function(k, v){ max++; });
+		if(pet_h['slots'][sl_id]<max) pet_h['slots'][sl_id]++;
+		if(isCtrl) pet_h['slots'][sl_id]=max;
+		set_stat_form();
+	});	
+
+	$(".b_slots_minus").on('click', function(event){
+		console.log('sl_minus');
+		var sl_id = $(this).attr('slotid');
+		if(pet_h['slots'][sl_id]>0) pet_h['slots'][sl_id]--;
+		if(isCtrl) pet_h['slots'][sl_id]=0;
+		set_stat_form();
+	});	
+}
+
+
+
+function set_stat_form() {
+	$("#i_level_v").val(pet_h['level']);
+	$("#i_star_v").val(pet_h['star']);
+	var color = lib['enum']['heroColor'][pet_h['color']];
+	var pluses = (color['ident'].match(/\+/g) || []).length;
+	var pl_str = (pluses > 0) ? '+'+pluses : '';
+	$("#i_color_v").val(ru[color['locale_key']]+pl_str);
+	console.log(pet_h);
+	$.each(pet_h['slots'], function(k, v){ 
+		console.log("#i_slots_v_"+k);
+		$("#i_slots_v_"+k).val(v);
+		console.log($("#i_slots_v_"+k).val());
+	});
+	print_stats();
+}
+
+function empty(mixed_var) {
+	return ( mixed_var === "" || mixed_var === 0  || mixed_var === "0" || mixed_var === null  || mixed_var === false || mixed_var === undefined ||  ( Array.isArray(mixed_var) && mixed_var.length === 0 ) );
+}
+
+function get_div_slots(id,name,val) {
+	var vid = lib['hero'][pet_id]['color'][pet_h['color']]['items'][id];
+	var vcol = lib['inventoryItem']['petGear'][vid]['color'];
+	var vass = lib['enum']['itemColor'][vcol]['roundFrameAssetTexture'];
+	var slht = '<div class="form-group col-md-4 text-center">';
+//	slht += '<label><b>'+name+'</b></label>';
+	slht += '<span class="pet-icon"><span class="image-frame-pet"><img class="image" src="/assets/images/pet_gear/item_'+vid+'.png" width="67"></span><img class="border b_pet_select" title="'+name+'" width="75" src="/assets/images/dialog_basic/'+vass+'.png"></span>';
+	slht += '<div class="input-group mb-2" style="max-width:120px;margin:0 auto;">';
+	slht += '<div class="input-group-prepend"><button type="button" class="btn btn-primary mb-2 b_slots_minus" slotid="'+id+'">-</button></div>';
+	slht += '<input type="text" readonly class="form-control-plaintext text-center i_slots_v" value="'+val+'" id="i_slots_v_'+id+'">';
+	slht += '<div class="input-group-append"><button type="button" class="btn btn-primary mb-2  b_slots_plus" slotid="'+id+'">+</button></div>';
+	slht += '</div>';
+	slht += '</div>';
+	return slht;
+}
+
+  
+  
+
+function start() {
+	div_pet = [];
+	$.each(lib['pet'], function(k, v){ 
+		var act = (k == pet_id) ? ' active' : ''; 
+//		div_pet.push('<button type="button" class="btn btn-primary mb-2 b_pet_select" dpet="'+k+'" style="margin:2px;padding: .375rem .5rem;">'+ru['LIB_HERO_NAME_'+k]+'</button>');
+		div_pet.push('<span class="pet-icon"><span class="image-frame-pet '+act+'" id="im_frame_p_'+k+'"><img class="image" src="/assets/images/pet_icons/pet_160_'+k+'.png" width="67"></span><img class="border b_pet_select" dpet="'+k+'" title="'+ru['LIB_HERO_NAME_'+k]+'" width="75" style="cursor: pointer;" src="/assets/images/dialog_basic/border_pet_chest.png" id="b_pet_s_'+k+'"></span>');
+	});
+	$("#list_pet").html(div_pet.join(''));
+	
+	$("#page_content").show();
+	$("#page_loader div").css('display','none');
+	
+	
+	fr_update_pet_head();
+	print_stats();
+	
+$(".b_pet_select").on('click', function(event){
+	console.log($(this).attr('dpet'));
+	$("#im_frame_p_"+pet_id).removeClass("active");
+	pet_id = $(this).attr('dpet');
+	$("#im_frame_p_"+pet_id).addClass("active");
+	fr_update_pet_head();
+	set_stat_form();
+});	
+
+}
+
+function get_hero_ava(id) {
+	var ass = lib['hero'][id]['iconAssetTexture'];
+	var hname = ru['LIB_HERO_NAME_'+id];
+	return '<span class="hero-icon"><span class="image-frame"><img class="image" src="/assets/images/hero_icons/'+ass+'.png" width="56"></span><img class="border"  title="'+hname+'" width="60" src="/assets/images/dialog_basic/border_super_white.png"></span>';
+}
+
+
+
+function set_empty_slots(force=false) {
+	if(pet_h['slots'] === undefined) pet_h['slots'] = [];
+	for(var i=0;i<6;i++) {
+		if(empty(pet_h['slots'][i]) || force) pet_h['slots'][i] = 0;
+	}
+}
+
+
+function calc_stats() {
+	if(empty(pet_h['level'])) pet_h['level'] = 1;
+	if(empty(pet_h['star'])) pet_h['star'] = 1;
+	if(empty(pet_h['color'])) pet_h['color'] = 1;
+	set_empty_slots();
+	if(empty(pet_h['skills'])) pet_h['skills'] = [];
+	var hlib = lib['hero'][pet_id];
+	var stats = [];
+	$.each(hlib['baseStats'], function(k, v){ stats[k] = v; });
+	stats['power'] = 0;
+	stats['statValue'] = 0;
+	var ststars = hlib['stars'][pet_h['star']]['battleStatData'];
+	var stcolor = (!empty(hlib['color'][pet_h['color']]['battleStatData'])) ? hlib['color'][pet_h['color']]['battleStatData'] : [];
+
+	$.each(ststars, function(k, v){
+		if(empty(stats[k])) stats[k] = 0;
+		if(!empty(ststars[k])) stats[k] += ststars[k]*pet_h['level'];
+		if(!empty(stcolor[k])) stats[k] += stcolor[k];
+	})	
+
+	$.each(pet_h['slots'], function(k, v){
+		var slid = hlib['color'][pet_h['color']]['items'][k];
+		if(v != 0) {
+			$.each(lib['inventoryItem']['petGear'][slid]['levels2']['stats'], function(iek, iev){ stats[iek] += iev[v-1];});
+			stats['statValue'] += lib['inventoryItem']['petGear'][slid]['levels'][v]['statValue'];
+		}
+	});
+	if(!empty(pet_h['skills'])) {
+		$.each(pet_h['skills'], function(k, v){
+			stats['power'] += lib['skill'][k]['power']*v;
+		})
+	} else {
+		$.each(hlib['skill'], function(k, v){
+			stats['power'] += lib['skill'][v]['power'];
+		})			
+	}
+	return stats;
+}
+
+function fr_update_slots() {
+	var htm_slot = [];
+	$.each(pet_h['slots'], function(k, v){ 
+		var inv_id = lib['hero'][pet_id]['color'][pet_h['color']]['items'][k];
+		var slname = ru['LIB_PET_GEAR_NAME_'+inv_id];
+		htm_slot.push(get_div_slots(k,slname,v));
+	});	
+	$("#form_slots").html(htm_slot.join(''));
+	set_cl_slot();
+}
+
+function fr_update_res() {
+	var htm_res = [];
+	var exp = lib['level']['pet'][pet_h['level']]['exp'];
+	var chh = 0; // cons 86
+	var starmoney = 0;
+	var gold = 0;
+	var evFrag = 0;
+	if(pet_h['color'] > 1) {
+		for(var i=1;i<pet_h['color'];i++) {
+			var it_col = lib['hero'][pet_id]['color'][i]['items'];
+			$.each(it_col, function(k, v){ 
+				var inv_lev = lib['inventoryItem']['petGear'][v]['levels2'];
+				$.each(inv_lev['starmoneyCost'], function(kk, vv){ starmoney += parseInt(vv);})
+				$.each(inv_lev['consumableCost'], function(kk, vv){ chh += parseInt(vv);})
+				$.each(inv_lev['costGold'], function(kk, vv){ gold += parseInt(vv);})
+			});	
+		}
+	}
+	var it_col = lib['hero'][pet_id]['color'][pet_h['color']]['items'];
+	$.each(it_col, function(k, v){ 
+		var inv_lev = lib['inventoryItem']['petGear'][v]['levels2'];
+		$.each(inv_lev['starmoneyCost'], function(kk, vv){ if(kk < pet_h['slots'][k]-1) starmoney += parseInt(vv);})
+		$.each(inv_lev['consumableCost'], function(kk, vv){ if(kk < pet_h['slots'][k]-1) chh += parseInt(vv);})
+		$.each(inv_lev['costGold'], function(kk, vv){ if(kk < pet_h['slots'][k]-1) gold += parseInt(vv);})
+	});	
+	evFrag += parseInt(lib['enum']['petEvolutionStar'][pet_h['star']]['summonFragmentCost']);
+	gold += parseInt(lib['enum']['petEvolutionStar'][pet_h['star']]['summonCost']['gold']);
+	
+	starmoney += parseInt((exp/10).toFixed(0));
+
+
+	htm_res.push('<div>');
+	htm_res.push('<div style="width:120px;display:inline-block"><div class="res-cost"><img src="/assets/images/dialog_basic/elixir_mid.png" title="'+ru['LIB_CONSUMABLE_NAME_85']+'" width="34"><span class="value">'+exp+'</span></div></div>');
+	htm_res.push('<div style="width:120px;display:inline-block"><div class="res-cost"><img src="/assets/images/dialog_basic/tear_mid.png" title="'+ru['LIB_CONSUMABLE_NAME_86']+'" width="34"><span class="value">'+chh+'</span></div></div>');
+	htm_res.push('<div style="width:24px;display:inline-block"><img src="/assets/images/dialog_basic/alchemy_arrow_right.png" width="20" style="margin-top: -6px;"></div>');
+	htm_res.push('<div style="width:120px;display:inline-block"><div class="res-cost"><img src="/assets/images/dialog_basic/igreenCoin.png" title="'+ru['LIB_PSEUDO_STARMONEY']+'" width="34"><span class="value">'+starmoney+'</span></div></div>');  
+	htm_res.push('</div>');
+ 	htm_res.push('<div style="margin-top:14px;">');
+	htm_res.push('<div style="width:120px;display:inline-block"><div class="res-cost"><img src="/assets/images/dialog_basic/icon_gold_coin.png" title="'+ru['LIB_PSEUDO_COIN']+'" width="34"><span class="value">'+gold+'</span></div></div>');  
+	htm_res.push('<div style="width:120px;display:inline-block"><div class="res-cost"><img src="/assets/images/dialog_basic/icon_pet_stone.png" title="'+ru['UI_DIALOG_INVENTORY_TAB_HERO_FRAGMENTS']+'" width="34"><span class="value">'+evFrag+'</span></div></div>');  
+	htm_res.push('</div> ');
+
+// EXP - зелье питомца. 1000 зелий за 100 изюма
+// шм - частица хаоса
+// Камни душ
+//
+
+
+
+
+	$("#form_res").html(htm_res.join(''));
+}
+
+function fr_update_pet_head() {
+	if(pet_id >= 6000 && pet_id < 6100) {
+		$("#p_name").html(ru['LIB_HERO_NAME_'+pet_id]);
+		$("#p_desc").html(ru['LIB_HERO_DESC_'+pet_id]);
+	}
+	var p_favor = [];
+	p_favor.push('<div class="zag">'+ru['UI_DIALOG_PET_SUITABLE_HEROES_CAPTION'].replace('%param1%',ru['LIB_HERO_NAME_'+pet_id])+'</div>');
+	$.each(lib['pet'][pet_id]['favorHeroes'], function(k, v){
+		p_favor.push(get_hero_ava(v));
+	});
+	$("#p_favor").html(p_favor.join(''));
+}
+
+function print_stats() {
+	stats = calc_stats();
+	fr_update_slots();
+	fr_update_res();
+	var htm_r = '<div class="zag">'+ru['UI_DIALOG_HERO_STAT_LIST_HEADER']+'</div>';
+	htm_r += '<div class="row">';
+	htm_r += '<div class="har col-md-auto"><span>'+ru['LIB_BATTLESTATDATA_FAVORPOWER']+': </span>'+stats['intelligence']+'</div>';
+	htm_r += '<div class="har col-md-auto"><span>'+ru['LIB_BATTLESTATDATA_ABILITYPOWER']+': </span>'+stats['strength']+'</div>';
+	if(!empty(stats['magicPenetration'])) htm_r += '<div class="har col-md-auto"><span>'+ru['LIB_BATTLESTATDATA_MAGICPENETRATION']+': </span>'+stats['magicPenetration']+'</div>';
+	if(!empty(stats['armorPenetration'])) htm_r += '<div class="har col-md-auto"><span>'+ru['LIB_BATTLESTATDATA_ARMORPENETRATION']+': </span>'+stats['armorPenetration']+'</div>';
+	htm_r += '</div>';
+	htm_r += '<div class="zag">'+ru['UI_DIALOG_PET_FAVOR_PARAMS_TITLE']+'</div>';
+	htm_r += '<div class="row">';
+	$.each(lib['pet'][pet_id]['favorStats'], function(k, v){
+		htm_r += '<div class="har col-md-auto"><span>'+ru['LIB_BATTLESTATDATA_'+v['stat'].toUpperCase()]+': </span>+'+(stats[v['baseStat']]*v['multiplier']).toFixed(0)+'</div>';
+	})		
+	htm_r += '</div>';
+	$("#p_param").html(htm_r);
+	
+	var htm_u = '<div class="zag">'+ru['UI_DIALOG_PET_SKILLS_ACTIVE']+'</div>';
+	$.each(lib['hero'][pet_id]['skill'], function(k, v){
+		var sk_name = '<center><i><b>'+ru['LIB_SKILL_'+v]+'</b></i></center>';
+		var sk_desk = ru['LIB_SKILL_DESC_'+v];
+		if(k == 2) {
+			if(pet_h['color'] < 2) sk_name = '<s>'+sk_name+'</s> <center>('+ru['SKILL_LOCKED_GREEN']+')</center>';
+		} else if(k > 3) {
+			htm_u += '<div class="zag">'+ru['UI_DIALOG_PET_SKILLS_PROTECTION']+'</div>';
+			if(pet_h['color'] < 7) sk_name = '<s>'+sk_name+'</s> <center>('+ru['SKILL_LOCKED_PURPLE']+')</center>';
+		}
+		var sk_stat = (ru['LIB_SKILL_PARAM_'+v] === undefined) ? ru['LIB_SKILL_NEXT_'+v] : ru['LIB_SKILL_PARAM_'+v];
+		if(sk_stat === undefined) sk_stat = ru[lib['skill'][v]['locale_id_currentLevel']];
+		var prm = lib['skill'][v]['behavior']['prime'];
+		if(prm === undefined) {
+
+		} else {
+			var osn = (prm['base'] == 'STR') ? stats['strength'] : stats['intelligence'];
+			console.log(v);
+			if(prm['c'] !== undefined) { var prime = osn*prm['K']+parseInt(prm['c']);
+			} else { var prime = osn*prm['K']; } 
+			if(prime < 25) { prime = prime.toFixed(3); }
+			else if(prime < 100)  { prime = prime.toFixed(2); }
+			else if(prime < 1000)  { prime = prime.toFixed(1); }
+			else { prime = prime.toFixed(0); }
+			c_class = (prm['type'] == 'physical') ? 'ty_p' : ((prm['type'] == 'magic') ? 'ty_m' : 'ty_a'); 
+			sk_stat = sk_stat.replace('%prime%%','<p class="'+c_class+'">'+prime+'%</p>');
+			sk_stat = sk_stat.replace('%prime%','<p class="'+c_class+'">'+prime+'</p>');
+		}
+		sk_stat = sk_stat.replace('%level%','<p class="ty_a">'+pet_h['level']+'</p>');
+		sk_desk = sk_desk.replace('%level%','<p class="ty_a">'+pet_h['level']+'</p>');
+		sk_desk = sk_desk.replace('%name%',ru['LIB_HERO_NAME_'+pet_id]);
+		if(lib['skill'][v]['behavior']['duration'] !== undefined) sk_desk = sk_desk.replace('%duration%',lib['skill'][v]['behavior']['duration']+' секунды');
+		htm_u += '<div class="skill"><div class="sk_name">'+sk_name+'</div><div class="sk_desk">'+sk_desk+'</div><div class="sk_stat">'+sk_stat+'</div><div class="sk_zav"></div></div>';
+
+		
+		
+		
+	});
+	
+	
+	$("#p_skill").html(htm_u);
+}
+</script><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="./Pets_files/translate_24dp.png" width="20" height="20" alt="Google Translate"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">Original text</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">Contribute a better translation</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>
