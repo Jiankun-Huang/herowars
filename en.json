@@ -3562,7 +3562,7 @@
   "LIB_SKILL_DESC_6005": "Covers the allies with a protective cover. When an ally takes any physical damage, the cover instantly restores lost Health.",
   "LIB_SKILL_DESC_6006": "Heals a hero with the lowest health.",
   "LIB_SKILL_DESC_6007": "Heals the owner if his health drops below 50%.",
-  "LIB_SKILL_DESC_6010": "Deals magic damage to enemies on the front line and leaves %area% of the area of ​​distorted space in which enemies take double magic damage.",
+  "LIB_SKILL_DESC_6010": "Deals magic damage to enemies on the front line and leaves %duration% of the area of ​​distorted space in which enemies take double magic damage.",
   "LIB_SKILL_DESC_6011": "Decreases magic defense of the closest enemy.",
   "LIB_SKILL_DESC_6012": "Accelerates host skills dealing magical damage.",
   "LIB_SKILL_DESC_6015": "Deals magic damage to all enemies. If at this moment the enemy has the effects of blinding, stunning, silence or charm, he takes triple damage. The chance of dealing triple damage is reduced if the target is above %level%.",
