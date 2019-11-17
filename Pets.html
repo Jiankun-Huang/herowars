@@ -733,12 +733,8 @@ function print_stats() {
 		sk_stat = sk_stat.replace('%level%','<p class="ty_a">'+pet_h['level']+'</p>');
 		sk_desk = sk_desk.replace('%level%','<p class="ty_a">'+pet_h['level']+'</p>');
 		sk_desk = sk_desk.replace('%name%',ru['LIB_HERO_NAME_'+pet_id]);
-		if(lib['skill'][v]['behavior']['duration'] !== undefined) sk_desk = sk_desk.replace('%duration%',lib['skill'][v]['behavior']['duration']+' секунды');
+		if(lib['skill'][v]['behavior']['duration'] !== undefined) sk_desk = sk_desk.replace('%duration%',lib['skill'][v]['behavior']['duration']+' seconds');
 		htm_u += '<div class="skill"><div class="sk_name">'+sk_name+'</div><div class="sk_desk">'+sk_desk+'</div><div class="sk_stat">'+sk_stat+'</div><div class="sk_zav"></div></div>';
-
-		
-		
-		
 	});
 	
 	
