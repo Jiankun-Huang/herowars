@@ -243,7 +243,7 @@
 	.resource-cost {
 		margin-left: 12px;
 		padding-right: 8px;
-		background: url(/assets/images/price-plate.png) no-repeat right 0;
+		background: url(./Pets_files/price-plate.png) no-repeat right 0;
 	}
 	
 	.res-cost {	
@@ -504,7 +504,7 @@ function get_div_slots(id,name,val) {
 	var vass = lib['enum']['itemColor'][vcol]['roundFrameAssetTexture'];
 	var slht = '<div class="form-group col-md-4 text-center">';
 //	slht += '<label><b>'+name+'</b></label>';
-	slht += '<span class="pet-icon"><span class="image-frame-pet"><img class="image" src="/assets/images/pet_gear/item_'+vid+'.png" width="67"></span><img class="border b_pet_select" title="'+name+'" width="75" src="/assets/images/dialog_basic/'+vass+'.png"></span>';
+	slht += '<span class="pet-icon"><span class="image-frame-pet"><img class="image" src="./Pets_files/item_'+vid+'.png" width="67"></span><img class="border b_pet_select" title="'+name+'" width="75" src="./Pets_files/'+vass+'.png"></span>';
 	slht += '<div class="input-group mb-2" style="max-width:120px;margin:0 auto;">';
 	slht += '<div class="input-group-prepend"><button type="button" class="btn btn-primary mb-2 b_slots_minus" slotid="'+id+'">-</button></div>';
 	slht += '<input type="text" readonly class="form-control-plaintext text-center i_slots_v" value="'+val+'" id="i_slots_v_'+id+'">';
@@ -522,7 +522,7 @@ function start() {
 	$.each(lib['pet'], function(k, v){ 
 		var act = (k == pet_id) ? ' active' : ''; 
 //		div_pet.push('<button type="button" class="btn btn-primary mb-2 b_pet_select" dpet="'+k+'" style="margin:2px;padding: .375rem .5rem;">'+ru['LIB_HERO_NAME_'+k]+'</button>');
-		div_pet.push('<span class="pet-icon"><span class="image-frame-pet '+act+'" id="im_frame_p_'+k+'"><img class="image" src="/assets/images/pet_icons/pet_160_'+k+'.png" width="67"></span><img class="border b_pet_select" dpet="'+k+'" title="'+ru['LIB_HERO_NAME_'+k]+'" width="75" style="cursor: pointer;" src="/assets/images/dialog_basic/border_pet_chest.png" id="b_pet_s_'+k+'"></span>');
+		div_pet.push('<span class="pet-icon"><span class="image-frame-pet '+act+'" id="im_frame_p_'+k+'"><img class="image" src="./Pets_files/pet_160_'+k+'.png" width="67"></span><img class="border b_pet_select" dpet="'+k+'" title="'+ru['LIB_HERO_NAME_'+k]+'" width="75" style="cursor: pointer;" src="./Pets_files/border_pet_chest.png" id="b_pet_s_'+k+'"></span>');
 	});
 	$("#list_pet").html(div_pet.join(''));
 	
@@ -547,7 +547,7 @@ $(".b_pet_select").on('click', function(event){
 function get_hero_ava(id) {
 	var ass = lib['hero'][id]['iconAssetTexture'];
 	var hname = ru['LIB_HERO_NAME_'+id];
-	return '<span class="hero-icon"><span class="image-frame"><img class="image" src="/assets/images/hero_icons/'+ass+'.png" width="56"></span><img class="border"  title="'+hname+'" width="60" src="/assets/images/dialog_basic/border_super_white.png"></span>';
+	return '<span class="hero-icon"><span class="image-frame"><img class="image" src="./Pets_files/'+ass+'.png" width="56"></span><img class="border"  title="'+hname+'" width="60" src="./Pets_files/border_super_white.png"></span>';
 }
 
 
@@ -642,14 +642,14 @@ function fr_update_res() {
 
 
 	htm_res.push('<div>');
-	htm_res.push('<div style="width:120px;display:inline-block"><div class="res-cost"><img src="/assets/images/dialog_basic/elixir_mid.png" title="'+ru['LIB_CONSUMABLE_NAME_85']+'" width="34"><span class="value">'+exp+'</span></div></div>');
-	htm_res.push('<div style="width:120px;display:inline-block"><div class="res-cost"><img src="/assets/images/dialog_basic/tear_mid.png" title="'+ru['LIB_CONSUMABLE_NAME_86']+'" width="34"><span class="value">'+chh+'</span></div></div>');
-	htm_res.push('<div style="width:24px;display:inline-block"><img src="/assets/images/dialog_basic/alchemy_arrow_right.png" width="20" style="margin-top: -6px;"></div>');
-	htm_res.push('<div style="width:120px;display:inline-block"><div class="res-cost"><img src="/assets/images/dialog_basic/igreenCoin.png" title="'+ru['LIB_PSEUDO_STARMONEY']+'" width="34"><span class="value">'+starmoney+'</span></div></div>');  
+	htm_res.push('<div style="width:120px;display:inline-block"><div class="res-cost"><img src="./Pets_files/elixir_mid.png" title="'+ru['LIB_CONSUMABLE_NAME_85']+'" width="34"><span class="value">'+exp+'</span></div></div>');
+	htm_res.push('<div style="width:120px;display:inline-block"><div class="res-cost"><img src="./Pets_files/tear_mid.png" title="'+ru['LIB_CONSUMABLE_NAME_86']+'" width="34"><span class="value">'+chh+'</span></div></div>');
+	htm_res.push('<div style="width:24px;display:inline-block"><img src="./Pets_files/alchemy_arrow_right.png" width="20" style="margin-top: -6px;"></div>');
+	htm_res.push('<div style="width:120px;display:inline-block"><div class="res-cost"><img src="./Pets_files/igreenCoin.png" title="'+ru['LIB_PSEUDO_STARMONEY']+'" width="34"><span class="value">'+starmoney+'</span></div></div>');  
 	htm_res.push('</div>');
  	htm_res.push('<div style="margin-top:14px;">');
-	htm_res.push('<div style="width:120px;display:inline-block"><div class="res-cost"><img src="/assets/images/dialog_basic/icon_gold_coin.png" title="'+ru['LIB_PSEUDO_COIN']+'" width="34"><span class="value">'+gold+'</span></div></div>');  
-	htm_res.push('<div style="width:120px;display:inline-block"><div class="res-cost"><img src="/assets/images/dialog_basic/icon_pet_stone.png" title="'+ru['UI_DIALOG_INVENTORY_TAB_HERO_FRAGMENTS']+'" width="34"><span class="value">'+evFrag+'</span></div></div>');  
+	htm_res.push('<div style="width:120px;display:inline-block"><div class="res-cost"><img src="./Pets_files/icon_gold_coin.png" title="'+ru['LIB_PSEUDO_COIN']+'" width="34"><span class="value">'+gold+'</span></div></div>');  
+	htm_res.push('<div style="width:120px;display:inline-block"><div class="res-cost"><img src="./Pets_files/icon_pet_stone.png" title="'+ru['UI_DIALOG_INVENTORY_TAB_HERO_FRAGMENTS']+'" width="34"><span class="value">'+evFrag+'</span></div></div>');  
 	htm_res.push('</div> ');
 
 // EXP - зелье питомца. 1000 зелий за 100 изюма
