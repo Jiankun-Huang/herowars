@@ -539,7 +539,7 @@ var build_u = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"
 var isCtrl = false;
 $(document).ready(function () {
     if(self==top) {document.documentElement.style.display = 'block' ; } else {$("#warn_frame").css('display','block'); }
-    $.getJSON('lib.json', function(data){
+    $.getJSON('lib1.json', function(data){
       var arr_incl = ['hero','pet','level','enum','skin','rune','artifact','titanGift','inventoryItem','rule','skill'];
       $.each(data, function(key, val){ if(arr_incl.includes(key)) lib[key] = val; });
       $.getJSON('en1.json', function(data){ru = data; start();});
