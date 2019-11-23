@@ -879,7 +879,7 @@ function set_stat_form() {
 	$.each(pet_h['slots'], function(k, v){ 
 		$("#i_slots_v_"+k).val(v);
 	});
-	window.history.pushState("{'pet_id':"+pet_id+",'pet_h':"+pet_h+"}", "Pets", "/pets/"+pet_id+"/"+getPetBuild()+"");
+	// window.history.pushState("{'pet_id':"+pet_id+",'pet_h':"+pet_h+"}", "Pets", "/pets/"+pet_id+"/"+getPetBuild()+"");
 	$("#resultPetFavor").html('');
 	$("#inputFavorHref").val('');
 	print_stats();
@@ -942,7 +942,7 @@ $(".b_pet_select").on('click', function(event){
 	$("#im_frame_p_"+pet_id).removeClass("active");
 	pet_id = $(this).attr('dpet');
 	$("#im_frame_p_"+pet_id).addClass("active");
-	window.history.pushState("{'pet_id':"+pet_id+"}", "Pets", "/pets/"+pet_id+"/");
+	// window.history.pushState("{'pet_id':"+pet_id+"}", "Pets", "/pets/"+pet_id+"/");
 	fr_update_pet_head();
 	set_stat_form();
 });	
