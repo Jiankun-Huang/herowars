@@ -38,9 +38,9 @@
 		var NXFlashVars = {"is_app_user":"1","session_key":"ea3ed1cb1d2a374dda6e53cd36490b4","vid":"12115093021438215810115","oid":"12115093021438215810115","app_id":"746862","authentication_key":"ps-z4dPy6Tk-1549022060-146.120.183.138-08aa700794c3c5c11cd3fd3d6659b6ee","session_expire":"1548259943","ext_perm":"emails,payments","sig":"821dff73600df0191795035e04841d9a","window_id":"CometName_4c69cf8867ef2a29437758071a358819","referer_type":"hp","requestLoadingInfoTimeout":3000,"country_code":"RU","geoip_city":"","sys_id":2,"network":"mail","uid":"12115093021438215810115","interface_lang":"ru","game_url":"https://my.mail.ru/apps/746862","group_url":"https://my.mail.ru/community/moba/","rpc_url":"https://heroes-mm.nextersglobal.com/api/","static_url":"https://heroes.cdnvideo.ru/","preloader":"mail/v043/MmLoader.swf?v=3","index_url":"https://heroes.cdnvideo.ru/mm/index.v0379.json.gz","ident":"heroes","preloader_asset":"preloader/preloader_default.swf?v=1","stat_url":"https://stat.nextersglobal.com/collector/client/","error_url":"https://error.nextersglobal.com/client/","browser":"chrome"};
 		var haxeDom = document.getElementById('flash-content');
 
-		//if (NXFlashVars === '') {
-			//NXSendErrorDString('NXFlashVars is empty');
-	//	}
+		if (NXFlashVars === '') {
+			NXSendErrorDString('NXFlashVars is empty');
+		}
 
 		haxeDom.innerHTML = '';
 		haxeDom.style.visibility = 'visible';
